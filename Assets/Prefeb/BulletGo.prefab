@@ -99,10 +99,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 922d94f5eff73487ca8c2b6bffb32cc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 13.63
+  playerSpeed: 10
+  enemySpeed: 5
   damage: 1
-  playerBulletColor: {r: 0, g: 0, b: 1, a: 1}
-  enemyBulletColor: {r: 1, g: 0, b: 0, a: 1}
+  playerBulletColor: {r: 0.023529412, g: 0.94509804, b: 1, a: 1}
+  enemyBulletColor: {r: 0.427451, g: 1, b: 0.94300944, a: 1}
 --- !u!50 &3744119637489847563
 Rigidbody2D:
   serializedVersion: 4
