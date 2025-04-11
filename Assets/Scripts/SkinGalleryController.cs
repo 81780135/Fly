@@ -70,6 +70,7 @@ public class SkinGalleryController : MonoBehaviour
         return newIndex % skinSprites.Length;
     }
 
+    // 淡入淡出协程
     private IEnumerator FadeEffect(float startAlpha, float endAlpha)
     {
         AudioSource.PlayClipAtPoint(switchSound, Camera.main.transform.position);
@@ -77,7 +78,7 @@ public class SkinGalleryController : MonoBehaviour
         float elapsed = 0f;
         while (elapsed < fadeDuration)
         {
-            imageCanvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, elapsed / fadeDuration);
+           // imageCanvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, elapsed / fadeDuration);
             elapsed += Time.deltaTime;
             yield return null;
         }
