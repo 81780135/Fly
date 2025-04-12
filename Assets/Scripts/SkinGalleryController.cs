@@ -6,8 +6,10 @@ public class SkinGalleryController : MonoBehaviour
 {
     [Header("基础设置")]
     public Sprite[] skinSprites;
-    public CanvasGroup imageCanvasGroup;
-    public float fadeDuration = 0.5f;
+    //public CanvasGroup imageCanvasGroup;
+    //public float fadeDuration = 0.5f;
+
+    [Header("音效")]
     public AudioClip switchSound; // 拖入音效文件
 
     [Header("界面引用")]
@@ -40,6 +42,10 @@ public class SkinGalleryController : MonoBehaviour
 
     private IEnumerator SwitchAnimation(int direction)
     {
+
+        // 在协程开始处添加
+        AudioSource.PlayClipAtPoint(switchSound, Camera.main.transform.position);
+
         isTransitioning = true;
 
         // 淡出当前图片
@@ -70,19 +76,18 @@ public class SkinGalleryController : MonoBehaviour
         return newIndex % skinSprites.Length;
     }
 
-    // 淡入淡出协程
     private IEnumerator FadeEffect(float startAlpha, float endAlpha)
     {
-        AudioSource.PlayClipAtPoint(switchSound, Camera.main.transform.position);
+        //AudioSource.PlayClipAtPoint(switchSound, Camera.main.transform.position);
 
-        float elapsed = 0f;
-        while (elapsed < fadeDuration)
+       // float elapsed = 0f;
+       // while (elapsed < fadeDuration)
         {
-           // imageCanvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, elapsed / fadeDuration);
-            elapsed += Time.deltaTime;
+            //imageCanvasGroup.alpha = Mathf.Lerp(startAlpha, endAlpha, elapsed / fadeDuration);
+            //elapsed += Time.deltaTime;
             yield return null;
         }
-        imageCanvasGroup.alpha = endAlpha;
+        //imageCanvasGroup.alpha = endAlpha;
     }
 
     private void UpdateDisplay()

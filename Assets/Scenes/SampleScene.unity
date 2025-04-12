@@ -855,7 +855,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.000061035, y: 241.41003}
+  m_AnchoredPosition: {x: -0.000061035, y: 241.41}
   m_SizeDelta: {x: 530, y: 886}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &244696147
@@ -1699,7 +1699,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 463788630}
         m_TargetAssemblyTypeName: SkinGalleryController, Assembly-CSharp
-        m_MethodName: ShowPrevious
+        m_MethodName: ShowPreviousSkin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1870,8 +1870,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -119.60242}
-  m_SizeDelta: {x: 0, y: 239.213}
+  m_AnchoredPosition: {x: 0, y: -119.60449}
+  m_SizeDelta: {x: 0, y: 239.20898}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &463788628
 MonoBehaviour:
@@ -2808,7 +2808,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 463788630}
         m_TargetAssemblyTypeName: SkinGalleryController, Assembly-CSharp
-        m_MethodName: ShowNext
+        m_MethodName: ShowNextSkin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
