@@ -1699,7 +1699,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 463788630}
         m_TargetAssemblyTypeName: SkinGalleryController, Assembly-CSharp
-        m_MethodName: ShowPreviousSkin
+        m_MethodName: ShowPrevious
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1927,8 +1927,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3f8b046dc7335c14c91e14807a6cd42d, type: 3}
   - {fileID: 21300000, guid: 4fd202d4116adf947a28df75b67c6a35, type: 3}
   - {fileID: 21300000, guid: 3fd5deba3d19e9247b60656c7200fb74, type: 3}
-  imageCanvasGroup: {fileID: 0}
-  fadeDuration: 0.5
   switchSound: {fileID: 8300000, guid: e64046eb8f9d9514198184d77c6e420f, type: 3}
   displayImage: {fileID: 240376425}
   leftButton: {fileID: 369157742}
@@ -2808,7 +2806,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 463788630}
         m_TargetAssemblyTypeName: SkinGalleryController, Assembly-CSharp
-        m_MethodName: ShowNextSkin
+        m_MethodName: ShowNext
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
