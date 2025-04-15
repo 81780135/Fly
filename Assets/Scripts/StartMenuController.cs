@@ -20,6 +20,6 @@ public class StartMenuController : MonoBehaviour
         // 隐藏开始面板，恢复游戏
         startPanel.SetActive(false);
         Time.timeScale = 1;
-        enemySpawner.StartSpawning(); // 手动触发敌人生成
+        // enemySpawner.StartSpawning(); // 手动触发敌人生成
     }
 }

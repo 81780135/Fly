@@ -62,7 +62,7 @@ public class Bullet : MonoBehaviour
     {
         if(isPlayerBullet && other.CompareTag("Enemy"))
         {
-            other.GetComponent<Enemy>().TakeDamage(damage);
+            // other.GetComponent<Enemy>().TakeDamage(damage);
             BulletPool.Instance.ReturnBullet(gameObject);
         }
         else if(!isPlayerBullet && other.CompareTag("Player"))
