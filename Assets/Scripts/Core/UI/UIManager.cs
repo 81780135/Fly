@@ -19,18 +19,19 @@ public class UIManager : MonoBehaviour
         planeMenu.SetActive(true);  // 打开战机界面
     }
 
-    // 当点击"飞机养成"按钮时调用
+    // 当点击"探索关卡"按钮时调用
     public void OpenPveMenu()
     {
         Debug.Log("按钮被点击了！"); // 添加这行
         mainMenu.SetActive(false);  // 关闭主界面
-        planeMenu.SetActive(true);  // 打开探索关卡界面
+        pveMenu.SetActive(true);  // 打开探索关卡界面
     }
     
     public void ReturnToMainMenu()
     {
-    planeMenu.SetActive(false);
-    mainMenu.SetActive(true);
+        pveMenu.SetActive(false);   
+        planeMenu.SetActive(false);
+        mainMenu.SetActive(true);
     }
 
     public static UIManager Instance;
