@@ -24,6 +24,7 @@ public class UIManager : MonoBehaviour
     {
         Debug.Log("按钮被点击了！"); // 添加这行
         mainMenu.SetActive(false);  // 关闭主界面
+        planeMenu.SetActive(false);  // 关闭战机界面
         pveMenu.SetActive(true);  // 打开探索关卡界面
     }
     
