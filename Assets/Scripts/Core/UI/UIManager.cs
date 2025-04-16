@@ -9,12 +9,22 @@ public class UIManager : MonoBehaviour
 
     public GameObject mainMenu;   // 主界面
     public GameObject planeMenu; // 战机界面
+    public GameObject pveMenu; // 探索关卡界面
 
     // 当点击"飞机养成"按钮时调用
     public void OpenPlaneMenu()
     {
+        Debug.Log("按钮被点击了！"); // 添加这行
         mainMenu.SetActive(false);  // 关闭主界面
         planeMenu.SetActive(true);  // 打开战机界面
+    }
+
+    // 当点击"飞机养成"按钮时调用
+    public void OpenPveMenu()
+    {
+        Debug.Log("按钮被点击了！"); // 添加这行
+        mainMenu.SetActive(false);  // 关闭主界面
+        planeMenu.SetActive(true);  // 打开探索关卡界面
     }
     
     public void ReturnToMainMenu()
