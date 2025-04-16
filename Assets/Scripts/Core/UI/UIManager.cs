@@ -6,6 +6,23 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
+
+    public GameObject mainMenu;   // 主界面
+    public GameObject planeMenu; // 战机界面
+
+    // 当点击"飞机养成"按钮时调用
+    public void OpenPlaneMenu()
+    {
+        mainMenu.SetActive(false);  // 关闭主界面
+        planeMenu.SetActive(true);  // 打开战机界面
+    }
+    
+    public void ReturnToMainMenu()
+    {
+    planeMenu.SetActive(false);
+    mainMenu.SetActive(true);
+    }
+
     public static UIManager Instance;
     public TextMeshProUGUI healthText;
     public TextMeshProUGUI diamondText;
