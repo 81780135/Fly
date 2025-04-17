@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class TouchController : MonoBehaviour
 {
@@ -15,11 +17,21 @@ public class TouchController : MonoBehaviour
         if (Input.touchCount > 0)
         {
             Touch touch = Input.GetTouch(0);
+            // 检查是否点击在UI上
+            if (IsPointerOverUIObject(touch.position))
+            {
+                return;
+            }
             HandleInput(touch.position,touch.phase);
         }
         // PC端鼠标检测
         else if (Application.isEditor || Application.platform == RuntimePlatform.WindowsPlayer || Application.platform == RuntimePlatform.OSXPlayer)
         {
+            // 检查是否点击在UI上
+            if (IsPointerOverUIObject(Input.mousePosition))
+            {
+                return;
+            }
             if (Input.GetMouseButtonDown(0))
             {
                 HandleInput(Input.mousePosition, TouchPhase.Began);
@@ -35,6 +47,16 @@ public class TouchController : MonoBehaviour
         }
 
     }
+    
+    // 检测触摸点是否在UI元素上
+    private bool IsPointerOverUIObject(Vector2 touchPosition)
+    {
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        eventData.position = touchPosition;
+        List<RaycastResult> results = new List<RaycastResult>();
+        EventSystem.current.RaycastAll(eventData, results);
+        return results.Count > 0; // 如果有UI元素被射线击中，返回true
+    }
 
     // 统一处理输入事件
     private void HandleInput(Vector2 inputPos, TouchPhase phase)
@@ -49,6 +71,7 @@ public class TouchController : MonoBehaviour
 
             case TouchPhase.Moved:
             case TouchPhase.Stationary:
+                
                 touchCurrentPos = inputPos;
                 break;
 
@@ -70,6 +93,13 @@ public class TouchController : MonoBehaviour
     public Vector2 GetTouchWorldPosition()
     {
         if (!IsInputActive) return Vector2.negativeInfinity;
+        return Camera.main.ScreenToWorldPoint(touchCurrentPos);
+    }
+    
+    public Vector2 GetInputWorldPosition()
+    {
+        if (!IsInputActive) 
+            return Vector2.negativeInfinity;
         return Camera.main.ScreenToWorldPoint(touchCurrentPos);
     }
 }

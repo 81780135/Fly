@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 3112592386978108759}
   - component: {fileID: 1073932228720128081}
   - component: {fileID: 1697423330291492351}
+  - component: {fileID: -3019813279900051674}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -147,7 +148,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
+  smoothFactor: 0.1
   firePoint: {fileID: 348063435963306313}
   fireRate: 0.1
   padding: 0.5
   MaxHealth: 100
+--- !u!114 &-3019813279900051674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4689683075870493051}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c10cc3b2bce74d7db1c92fab5e642c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

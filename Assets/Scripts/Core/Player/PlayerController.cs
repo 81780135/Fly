@@ -5,12 +5,15 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float moveSpeed = 10f;
-
+    [SerializeField] float smoothFactor = 0.1f;
     private Vector2 targetPosition;
+    private Rigidbody2D rb;
 
     [SerializeField] private Transform firePoint;
     [SerializeField] private float fireRate = 0.1f;
     private float nextFireTime;
+    
+    private TouchController touchController;
 
     [SerializeField] private float padding = 0.5f; // 距离屏幕边缘的留空
     private Vector2 minBounds, maxBounds;
@@ -20,6 +23,10 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+        touchController = FindObjectOfType<TouchController>();
+        targetPosition = transform.position;
+        //Input.simulateMouseWithTouches = true; // 允许鼠标模拟触摸
         InitBounds();
         CurrentHealth = MaxHealth;
     }
@@ -41,23 +48,26 @@ public class PlayerController : MonoBehaviour
         minBounds = mainCamera.ViewportToWorldPoint(new Vector2(0, 0)) + new Vector3(padding, padding, 0);
         maxBounds = mainCamera.ViewportToWorldPoint(new Vector2(1, 1)) - new Vector3(padding, padding, 0);
     }
+    
+    
 
     void Update()
     {
-        if (Input.touchCount > 0)
+        Vector2 touchWorldPos = touchController.GetTouchWorldPosition();
+        
+        // 通过标志位和分量检查双重验证
+        if (touchController.IsInputActive)
         {
-            Touch touch = Input.GetTouch(0);
-            targetPosition = Camera.main.ScreenToWorldPoint(touch.position);
+            Vector2 inputWorldPos = touchController.GetInputWorldPosition();
+            
+            // 检查是否为有效坐标
+            if (!float.IsNegativeInfinity(inputWorldPos.x) &&
+                !float.IsNegativeInfinity(inputWorldPos.y))
+            {
+                targetPosition = inputWorldPos;
+                ClampPositionToScreenBounds();
+            }
         }
-
-        // 平滑移动
-        transform.position = Vector2.Lerp(transform.position, targetPosition, moveSpeed * Time.deltaTime);
-
-        Vector2 clampedPos = new Vector2(
-            Mathf.Clamp(transform.position.x, minBounds.x, maxBounds.x),
-            Mathf.Clamp(transform.position.y, minBounds.y, maxBounds.y)
-        );
-        transform.position = clampedPos;
 
         // 自动发射子弹
         if (Time.time >= nextFireTime)
@@ -67,6 +77,23 @@ public class PlayerController : MonoBehaviour
             bullet.GetComponent<Rigidbody2D>().velocity = Vector2.up * 10f;
             nextFireTime = Time.time + fireRate;
         }
+    }
+    
+    void ClampPositionToScreenBounds()
+    {
+        Vector2 viewportPos = Camera.main.WorldToViewportPoint(targetPosition);
+        viewportPos.x = Mathf.Clamp(viewportPos.x, 0.05f, 0.95f);
+        viewportPos.y = Mathf.Clamp(viewportPos.y, 0.05f, 0.95f);
+        targetPosition = Camera.main.ViewportToWorldPoint(viewportPos);
+    }
+    
+    void FixedUpdate()
+    {
+        rb.MovePosition(Vector2.Lerp(
+            transform.position,
+            targetPosition,
+            smoothFactor * Time.fixedDeltaTime * 50
+        ));
     }
     
     // 碰撞检测示例（玩家受伤逻辑）
