@@ -5099,8 +5099,6 @@ MonoBehaviour:
   healthText: {fileID: 2040259685}
   diamondText: {fileID: 866864613}
   mainMenuPanel: {fileID: 2035793193}
-  battleHUD: {fileID: 0}
-  pausePanel: {fileID: 0}
 --- !u!1 &945307768
 GameObject:
   m_ObjectHideFlags: 0
