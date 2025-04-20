@@ -53,4 +53,5 @@ public class GameManager : MonoBehaviour
         // 取消订阅事件，防止内存泄漏
         SceneManager.sceneLoaded -= OnSceneLoaded;
     }
+  
 }
