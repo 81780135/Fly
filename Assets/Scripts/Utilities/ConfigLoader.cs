@@ -7,10 +7,9 @@ public static class ConfigLoader
     // 示例：从CSV加载敌人配置
     public static List<EnemyConfig> LoadEnemyConfig()
     {
-        TextAsset csvFile = Resources.Load<TextAsset>("Configs/EnemyConfig");
+        TextAsset csvFile = Resources.Load<TextAsset>("Configs/怪物表");
         string[] lines = csvFile.text.Split('\n');
         List<EnemyConfig> configs = new List<EnemyConfig>();
-
         for (int i = 1; i < lines.Length; i++) // 跳过表头
         {
             string[] fields = lines[i].Split(',');
