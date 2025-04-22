@@ -15,4 +15,6 @@ EditorBuildSettings:
     path: Assets/Scenes/BattleScene.unity
     guid: 7cdf87d86b6d64a5cb734a5898bbd013
   m_configObjects:
+    com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: d90d88700915468469bae45b15fdef3c, type: 2}
+    com.unity.adaptiveperformance.oppo.android.provider_settings: {fileID: 11400000, guid: 014bbd11e53733146b6c0563b2c6b334, type: 2}
     com.unity.adaptiveperformance.simulator.provider_settings: {fileID: 11400000, guid: 04f747f5fbc854d1eadd007d92c7ecf1, type: 2}
