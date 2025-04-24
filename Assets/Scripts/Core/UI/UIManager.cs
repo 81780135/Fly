@@ -11,6 +11,7 @@ public class UIManager : MonoBehaviour
     public GameObject planeMenu; // 战机界面
     public GameObject pveMenu; // 探索关卡界面
     public GameObject My_Data; // 个人信息界面
+    public GameObject skill_describe; // 个人信息界面
 
     // 当点击"飞机养成"按钮时调用
     public void OpenPlaneMenu()
@@ -32,15 +33,25 @@ public class UIManager : MonoBehaviour
     // 当点击"个人信息"按钮时调用
     public void OpenMy_Data()
     {
-        Debug.Log("按钮被点击了！"); // 添加这行
         My_Data.SetActive(true);  // 打开个人信息界面
     }
 
     // 当点击"个人信息背景"按钮时调用
     public void CloseMy_Data()
     {
-        Debug.Log("按钮被点击了！"); // 添加这行
         My_Data.SetActive(false);  // 关闭个人信息界面
+    }
+
+     // 当点击"技能图标"按钮时调用
+    public void Openskill_describe()
+    {
+        skill_describe.SetActive(true);  // 打开技能详情界面
+    }
+
+     // 当点击"技能详情界面空白处"按钮时调用
+    public void Closeskill_describe()
+    {
+        skill_describe.SetActive(false);  // 关闭技能详情界面
     }
 
     public void ReturnToMainMenu()
