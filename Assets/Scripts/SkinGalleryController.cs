@@ -1,21 +1,33 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
+using System.Collections.Generic;
+using TMPro;
 
 public class SkinGalleryController : MonoBehaviour
 {
-    [Header("»ù´¡ÉèÖÃ")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public Sprite[] skinSprites;
     //public CanvasGroup imageCanvasGroup;
     //public float fadeDuration = 0.5f;
 
-    [Header("ÒôÐ§")]
-    public AudioClip switchSound; // ÍÏÈëÒôÐ§ÎÄ¼þ
+    [Header("ï¿½ï¿½Ð§")]
+    public AudioClip switchSound; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½Ä¼ï¿½
 
-    [Header("½çÃæÒýÓÃ")]
+    [Header("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½")]
     public Image displayImage;
     public Button leftButton;
     public Button rightButton;
+    // public int PlaneID;
+    // public int Level;
+    // public int Attack;
+    // public int Defense;
+    // public int HP;
+    public TextMeshProUGUI m_textLevel;
+    public TextMeshProUGUI m_textAttack;
+    public TextMeshProUGUI m_textDefense;
+    public TextMeshProUGUI m_textHP;
+    
 
     private int currentIndex = 0;
     private bool isTransitioning = false;
@@ -23,7 +35,7 @@ public class SkinGalleryController : MonoBehaviour
     void Start()
     {
         UpdateDisplay();
-        // ÎÞÏÞÑ­»·Ä£Ê½²»ÐèÒª½ûÓÃ°´Å¥
+        // ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½Ä£Ê½ï¿½ï¿½ï¿½ï¿½Òªï¿½ï¿½ï¿½Ã°ï¿½Å¥
         leftButton.interactable = true;
         rightButton.interactable = true;
     }
@@ -43,36 +55,36 @@ public class SkinGalleryController : MonoBehaviour
     private IEnumerator SwitchAnimation(int direction)
     {
 
-        // ÔÚÐ­³Ì¿ªÊ¼´¦Ìí¼Ó
+        // ï¿½ï¿½Ð­ï¿½Ì¿ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½
         AudioSource.PlayClipAtPoint(switchSound, Camera.main.transform.position);
 
         isTransitioning = true;
 
-        // µ­³öµ±Ç°Í¼Æ¬
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ç°Í¼Æ¬
         yield return StartCoroutine(FadeEffect(1, 0));
 
-        // ¼ÆËãÐÂË÷Òý£¨Ñ­»·´¦Àí£©
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         currentIndex = GetLoopIndex(currentIndex + direction);
         UpdateDisplay();
 
-        // µ­ÈëÐÂÍ¼Æ¬
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í¼Æ¬
         yield return StartCoroutine(FadeEffect(0, 1));
 
         isTransitioning = false;
     }
 
-    // Ñ­»·Ë÷Òý¼ÆËã·½·¨
+    // Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ã·½ï¿½ï¿½
     private int GetLoopIndex(int newIndex)
     {
         if (skinSprites.Length == 0) return 0;
 
-        // ´¦Àí¸ºÊýÇé¿ö
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         while (newIndex < 0)
         {
             newIndex += skinSprites.Length;
         }
 
-        // ´¦ÀíÕýÊý³¬ÏÞ
+        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         return newIndex % skinSprites.Length;
     }
 
@@ -96,6 +108,14 @@ public class SkinGalleryController : MonoBehaviour
         {
             displayImage.sprite = skinSprites[currentIndex];
         }
+
+    
+        List<PlaneData> allCharacters = PlaneDataManager.Instance.GetAllPlaneData();
+        
+        m_textLevel.text = allCharacters[currentIndex].Level.ToString();
+        m_textHP.text = allCharacters[currentIndex].HP.ToString();
+        m_textAttack.text = allCharacters[currentIndex].Attack.ToString();
+        m_textDefense.text = allCharacters[currentIndex].Defense.ToString();
     }
 
 }
