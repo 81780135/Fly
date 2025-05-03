@@ -2203,6 +2203,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bcfd8e870fcbd29438453574418857f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cardPrefab: {fileID: 0}
+  contentParent: {fileID: 0}
 --- !u!1 &265597504
 GameObject:
   m_ObjectHideFlags: 0
@@ -4562,6 +4564,7 @@ GameObject:
   - component: {fileID: 427115582}
   - component: {fileID: 427115581}
   - component: {fileID: 427115580}
+  - component: {fileID: 427115585}
   m_Layer: 5
   m_Name: SkinGallery
   m_TagString: Untagged
@@ -4618,6 +4621,10 @@ MonoBehaviour:
   displayImage: {fileID: 922787774}
   leftButton: {fileID: 461307458}
   rightButton: {fileID: 134197785}
+  m_textLevel: {fileID: 1830607974}
+  m_textAttack: {fileID: 1607702156}
+  m_textDefense: {fileID: 2138256617}
+  m_textHP: {fileID: 503037584}
 --- !u!114 &427115581
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4728,6 +4735,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 427115578}
   m_CullTransparentMesh: 1
+--- !u!114 &427115585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 427115578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0687792e51ad4cfc9a0f6db3c3eb2e1f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  allCharacters: []
 --- !u!1 &427482743
 GameObject:
   m_ObjectHideFlags: 0
