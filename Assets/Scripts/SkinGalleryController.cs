@@ -6,15 +6,15 @@ using TMPro;
 
 public class SkinGalleryController : MonoBehaviour
 {
-    [Header("��������")]
+    [Header("基础设置")]
     public Sprite[] skinSprites;
     //public CanvasGroup imageCanvasGroup;
     //public float fadeDuration = 0.5f;
 
-    [Header("��Ч")]
-    public AudioClip switchSound; // ������Ч�ļ�
+    [Header("音效")]
+    public AudioClip switchSound; // 拖入音效文件
 
-    [Header("��������")]
+    [Header("界面引用")]
     public Image displayImage;
     public Button leftButton;
     public Button rightButton;
@@ -35,7 +35,7 @@ public class SkinGalleryController : MonoBehaviour
     void Start()
     {
         UpdateDisplay();
-        // ����ѭ��ģʽ����Ҫ���ð�ť
+        // 无限循环模式不需要禁用按钮
         leftButton.interactable = true;
         rightButton.interactable = true;
     }
@@ -55,36 +55,36 @@ public class SkinGalleryController : MonoBehaviour
     private IEnumerator SwitchAnimation(int direction)
     {
 
-        // ��Э�̿�ʼ�����
+        // 在协程开始处添加
         AudioSource.PlayClipAtPoint(switchSound, Camera.main.transform.position);
 
         isTransitioning = true;
 
-        // ������ǰͼƬ
+        // 淡出当前图片
         yield return StartCoroutine(FadeEffect(1, 0));
 
-        // ������������ѭ������
+        // 计算新索引（循环处理）
         currentIndex = GetLoopIndex(currentIndex + direction);
         UpdateDisplay();
 
-        // ������ͼƬ
+        // 淡入新图片
         yield return StartCoroutine(FadeEffect(0, 1));
 
         isTransitioning = false;
     }
 
-    // ѭ���������㷽��
+    // 循环索引计算方法
     private int GetLoopIndex(int newIndex)
     {
         if (skinSprites.Length == 0) return 0;
 
-        // ���������
+        // 处理负数情况
         while (newIndex < 0)
         {
             newIndex += skinSprites.Length;
         }
 
-        // ������������
+        // 处理正数超限
         return newIndex % skinSprites.Length;
     }
 
