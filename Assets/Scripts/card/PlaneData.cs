@@ -5,6 +5,8 @@ using System.Collections.Generic;
 public class PlaneData
 {
     public int PlaneID;
+    public string Name;
+    public string Quality;
     public int Level;
     public int Attack;
     public int Defense;

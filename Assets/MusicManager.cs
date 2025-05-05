@@ -9,8 +9,8 @@ public class MusicManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            DontDestroyOnLoad(gameObject); // ÇĞ»»³¡¾°Ê±²»Ïú»Ù
-            GetComponent<AudioSource>().Play(); // ×Ô¶¯²¥·ÅÒôÀÖ
+            DontDestroyOnLoad(gameObject); // åˆ‡æ¢åœºæ™¯æ—¶ä¸é”€æ¯
+            GetComponent<AudioSource>().Play(); // è‡ªåŠ¨æ’­æ”¾éŸ³ä¹
         }
         else
         {
@@ -18,7 +18,7 @@ public class MusicManager : MonoBehaviour
         }
     }
 
-    // Í£Ö¹ÒôÀÖµÄ·½·¨
+    // åœæ­¢éŸ³ä¹çš„æ–¹æ³•
     public void StopMusic()
     {
         GetComponent<AudioSource>().Stop();
