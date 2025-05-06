@@ -16,14 +16,14 @@ public class ResourceLoader : MonoBehaviour
         }
 
         // 资源路径格式：Resources/Plane/quality/1
-        string path = $"Plane/quality/{Quality}";
+        string path = $"PlaneImages/{Quality}";
+        Debug.Log($"正在加载：{Quality}");
         Sprite sprite = Resources.Load<Sprite>(path);
 
         // 加载失败处理
         if(sprite == null)
         {
-            Debug.LogWarning($"找不到图片资源：{Quality}");
-            sprite = Resources.Load<Sprite>("Plane/quality");
+            sprite = Resources.Load<Sprite>("PlaneImages/default");
         }
 
         _imageCache.Add(Quality, sprite);
@@ -33,10 +33,11 @@ public class ResourceLoader : MonoBehaviour
     // 预加载所有图片（可选）
     public static void PreloadImages()
     {
-        Sprite[] allSprites = Resources.LoadAll<Sprite>("Plane/quality");
+        Sprite[] allSprites = Resources.LoadAll<Sprite>("PlaneImages");
         foreach(var sprite in allSprites)
         {
             _imageCache[sprite.name] = sprite;
         }
     }
+    
 }

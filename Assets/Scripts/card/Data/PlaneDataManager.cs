@@ -27,14 +27,14 @@ public class PlaneDataManager : MonoBehaviour
         TextAsset csvFile = Resources.Load<TextAsset>("Configs/飞机表");
         string[] lines = csvFile.text.Split('\n');
 
-        for (int i = 1; i <6 ; i++)
+        for (int i = 1; i <lines.Length; i++)
         {
             string[] values = lines[i].Split(',');
             PlaneData planeData = new PlaneData();
             planeData.PlaneID = int.Parse(values[0]);
             // 名称字段特殊处理
             planeData.Name = values[1].Trim();
-            planeData.Quality = values[2];
+            planeData.Quality = values[2].ToString();
             planeData.Level = int.Parse(values[3]);
             planeData.Attack = int.Parse(values[4]);
             planeData.Defense = int.Parse(values[5]);

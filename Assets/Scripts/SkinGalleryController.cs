@@ -110,8 +110,7 @@ public class SkinGalleryController : MonoBehaviour
         {
             displayImage.sprite = skinSprites[currentIndex];
         }
-
-    
+        
         List<PlaneData> allCharacters = PlaneDataManager.Instance.GetAllPlaneData();
         
         m_textName.text = allCharacters[currentIndex].Name.ToString();
@@ -119,6 +118,7 @@ public class SkinGalleryController : MonoBehaviour
         m_textHP.text = allCharacters[currentIndex].HP.ToString();
         m_textAttack.text = allCharacters[currentIndex].Attack.ToString();
         m_textDefense.text = allCharacters[currentIndex].Defense.ToString();
+        //QualityImage.Image = allCharacters[currentIndex].Quality.ToString();
+        
     }
-
 }
