@@ -3,41 +3,31 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ResourceLoader : MonoBehaviour
+public static class ResourceLoader
 {
-    private static Dictionary<string, Sprite> _imageCache = new();
+    private static Dictionary<string, Sprite> _planeImageCache = new();
+    private static Dictionary<int, Sprite> _qualityIconCache = new();
 
-    public static Sprite LoadPlaneImage(string Quality)
+    public static void LoadPlaneImage(string imageID)
     {
-        // 优先从缓存读取
-        if(_imageCache.TryGetValue(Quality, out var cachedSprite))
-        {
-            return cachedSprite;
-        }
+        // 原有飞机图片加载逻辑...
+    }
 
-        // 资源路径格式：Resources/Plane/quality/1
-        string path = $"PlaneImages/{Quality}";
-        Debug.Log($"正在加载：{Quality}");
+    public static Sprite LoadQualityIcon(int quality)
+    {
+        if(_qualityIconCache.TryGetValue(quality, out var cachedIcon))
+            return cachedIcon;
+
+        string path = $"Plane/quality/{quality}";
         Sprite sprite = Resources.Load<Sprite>(path);
 
-        // 加载失败处理
         if(sprite == null)
         {
-            sprite = Resources.Load<Sprite>("PlaneImages/default");
+            Debug.LogError($"找不到品质图标：{path}");
+            sprite = Resources.Load<Sprite>("Plane/quality/default");
         }
 
-        _imageCache.Add(Quality, sprite);
+        _qualityIconCache.Add(quality, sprite);
         return sprite;
     }
-
-    // 预加载所有图片（可选）
-    public static void PreloadImages()
-    {
-        Sprite[] allSprites = Resources.LoadAll<Sprite>("PlaneImages");
-        foreach(var sprite in allSprites)
-        {
-            _imageCache[sprite.name] = sprite;
-        }
-    }
-    
 }

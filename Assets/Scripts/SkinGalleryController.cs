@@ -18,7 +18,7 @@ public class SkinGalleryController : MonoBehaviour
     public Image displayImage;
     public Button leftButton;
     public Button rightButton;
-    public Image QualityImage;
+    public Image QualityIcon;
     // public int PlaneID;
     // public int Level;
     // public int Attack;
@@ -119,6 +119,7 @@ public class SkinGalleryController : MonoBehaviour
         m_textAttack.text = allCharacters[currentIndex].Attack.ToString();
         m_textDefense.text = allCharacters[currentIndex].Defense.ToString();
         //QualityImage.Image = allCharacters[currentIndex].Quality.ToString();
+        QualityIcon.sprite = ResourceLoader.LoadQualityIcon(allCharacters[currentIndex].Quality);
         
     }
 }

@@ -34,7 +34,8 @@ public class PlaneDataManager : MonoBehaviour
             planeData.PlaneID = int.Parse(values[0]);
             // 名称字段特殊处理
             planeData.Name = values[1].Trim();
-            planeData.Quality = values[2].ToString();
+            //planeData.Quality = values[2].ToString();
+            planeData.Quality = int.Parse(values[2]);
             planeData.Level = int.Parse(values[3]);
             planeData.Attack = int.Parse(values[4]);
             planeData.Defense = int.Parse(values[5]);
