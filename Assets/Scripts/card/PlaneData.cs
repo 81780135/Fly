@@ -11,6 +11,8 @@ public class PlaneData
     public int Attack;
     public int Defense;
     public int HP;
+    public int resource;
+    public int combat;
 }
 
 

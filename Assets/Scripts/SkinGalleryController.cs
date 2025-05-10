@@ -19,6 +19,7 @@ public class SkinGalleryController : MonoBehaviour
     public Button leftButton;
     public Button rightButton;
     public Image QualityIcon;
+    public Image PlaneImage;
     // public int PlaneID;
     // public int Level;
     // public int Attack;
@@ -29,6 +30,7 @@ public class SkinGalleryController : MonoBehaviour
     public TextMeshProUGUI m_textAttack;
     public TextMeshProUGUI m_textDefense;
     public TextMeshProUGUI m_textHP;
+    public TextMeshProUGUI m_textcombat;
     
 
     private int currentIndex = 0;
@@ -113,13 +115,14 @@ public class SkinGalleryController : MonoBehaviour
         
         List<PlaneData> allCharacters = PlaneDataManager.Instance.GetAllPlaneData();
         
-        m_textName.text = allCharacters[currentIndex].Name.ToString();
+        m_textName.text = allCharacters[currentIndex].Name;
         m_textLevel.text = allCharacters[currentIndex].Level.ToString();
         m_textHP.text = allCharacters[currentIndex].HP.ToString();
         m_textAttack.text = allCharacters[currentIndex].Attack.ToString();
         m_textDefense.text = allCharacters[currentIndex].Defense.ToString();
-        //QualityImage.Image = allCharacters[currentIndex].Quality.ToString();
+        m_textcombat.text = allCharacters[currentIndex].combat.ToString();
         QualityIcon.sprite = ResourceLoader.LoadQualityIcon(allCharacters[currentIndex].Quality);
+        PlaneImage.sprite = ResourceLoader.LoadPlaneImage(allCharacters[currentIndex].resource);
         
     }
 }

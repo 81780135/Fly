@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PlaneDataManager : MonoBehaviour
 {
@@ -26,20 +23,20 @@ public class PlaneDataManager : MonoBehaviour
     {
         TextAsset csvFile = Resources.Load<TextAsset>("Configs/飞机表");
         string[] lines = csvFile.text.Split('\n');
-
-        for (int i = 1; i <lines.Length; i++)
+        
+        for (int i = 1; i <lines.Length; i++) // 从索引1开始跳过表头
         {
             string[] values = lines[i].Split(',');
             PlaneData planeData = new PlaneData();
             planeData.PlaneID = int.Parse(values[0]);
-            // 名称字段特殊处理
             planeData.Name = values[1].Trim();
-            //planeData.Quality = values[2].ToString();
             planeData.Quality = int.Parse(values[2]);
             planeData.Level = int.Parse(values[3]);
             planeData.Attack = int.Parse(values[4]);
             planeData.Defense = int.Parse(values[5]);
             planeData.HP = int.Parse(values[6]);
+            planeData.resource = int.Parse(values[7]);
+            planeData.combat = int.Parse(values[8]);
             allCharacters.Add(planeData);
         }
     }
