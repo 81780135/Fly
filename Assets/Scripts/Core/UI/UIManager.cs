@@ -13,6 +13,7 @@ public class UIManager : MonoBehaviour
     public GameObject pveMenu; // 探索关卡界面
     public GameObject My_Data; // 个人信息界面
     public GameObject skill_describe; // 个人信息界面
+    public GameObject loginMenu; // 登录界面
 
     // 当点击"飞机养成"按钮时调用
     public void OpenPlaneMenu()
@@ -63,7 +64,11 @@ public class UIManager : MonoBehaviour
     {
         skill_describe.SetActive(false);  // 关闭技能详情界面
     }
-
+    public void CloseloginMenu()
+    {
+        loginMenu.SetActive(false);  // 关闭登录界面
+    }
+    
     public void ReturnToMainMenu()
     {
         pveMenu.SetActive(false);   
@@ -71,6 +76,7 @@ public class UIManager : MonoBehaviour
         petMenu.SetActive(false); 
         My_Data.SetActive(false);
         mainMenu.SetActive(true);
+        loginMenu.SetActive(false);
     }
 
     public static UIManager Instance;
